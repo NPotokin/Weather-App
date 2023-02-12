@@ -1,12 +1,11 @@
 import React from "react"
+import Main from "./Components/Main"
 
 
 function App() {
   return (
     <>
-    <div className="h-screen bg-sky-800">
-      Hey g
-    </div>
+    <Main />
     </>
   );
 } 
