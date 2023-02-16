@@ -12,12 +12,16 @@ function MainData() {
       Heavy rain with a chance of hail and frost</div>
       <div className="grid grid-cols-2 gap-3">
         <div className="border-2 rounded-2xl">
+
+
           <TiWeatherPartlySunny size={75} className="text-amber-500 mx-auto mt-3"/>
           <p className="mt-2 ml-2 text-center text-slate-100 font-bold text-lg md:text-xl
          lg:text-2xl xl:text-3xl">Weather now</p>
           <p className="my-6 text-center  text-amber-500 font-extrabold text-4xl md:text-5xl
          lg:text-6xl xl:text-7xl">29 °C</p>
         </div>
+
+
         <div className="border-2 rounded-2xl">
           <TiWeatherSunny size={75} className="text-amber-500 mx-auto mt-3"/>
           <p className="mt-2 ml-2 text-center text-slate-100 font-bold text-lg md:text-xl
@@ -25,6 +29,8 @@ function MainData() {
           <p className="my-6 text-center  text-amber-500 font-extrabold text-4xl md:text-5xl
          lg:text-6xl xl:text-7xl">23 °C</p>
         </div>
+
+
         <div className="border-2 rounded-2xl">
           <FaTemperatureHigh size={75} className="text-amber-500 mx-auto mt-3"/>
           <p className="mt-2 ml-2 text-center text-slate-100 font-bold text-lg md:text-xl
@@ -32,6 +38,9 @@ function MainData() {
           <p className="my-6 text-center  text-amber-500 font-extrabold text-4xl md:text-5xl
          lg:text-6xl xl:text-7xl">32 °C</p>
         </div>
+
+
+        
         <div className="border-2 rounded-2xl">
           <FaTemperatureLow size={75} className="text-amber-500 mx-auto mt-3"/>
           <p className="mt-2 ml-2 text-center text-slate-100 font-bold text-lg md:text-xl
