@@ -1,9 +1,9 @@
 import React from "react"
 import { useState } from "react"
 import axios from "axios"
-import { WiBarometer, WiHumidity, WiRain, WiCloud, WiStrongWind, WiCloudyGusts } from "react-icons/wi"
+import { WiBarometer, WiHumidity, WiCloud, WiStrongWind, WiCloudyGusts } from "react-icons/wi"
 import { MdOutlineVisibility} from "react-icons/md"
-import {MdOutlineDarkMode, MdLocationOn, MdSearch} from "react-icons/md"
+import { MdSearch} from "react-icons/md"
 import {TiWeatherPartlySunny, TiWeatherSunny} from "react-icons/ti"
 import {FaTemperatureLow, FaTemperatureHigh} from "react-icons/fa"
 import {FiSunset, FiSunrise } from "react-icons/fi"
@@ -16,8 +16,21 @@ function Main() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState('')
 
+  const [munits, setMunits] = useState(false)
+  const [urlM, setUrlM] = useState('metric')
+  
+  
+  function toggleUnits(){
+    setMunits(!munits);
+    urlM === "imperial" ? setUrlM('metric') : setUrlM("imperial")
+    searchLocation();
+    
+  } 
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=7661508e301be410c0c9f630604f8b6a`
+  
+
+  
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=${urlM}`
 
   const searchLocation = (event) => {
       axios.get(url).then((response) => {
@@ -51,8 +64,30 @@ function Main() {
   return (
     <div className="p-1 m-3 h-full max-w-4xl mx-auto bg-gradient-to-r
      from-purple-800 to-fuchsia-800 container flex flex-col rounded-3xl">
-      <div className="p-3 m-3 mt-6 max-w-4xl flex flex-row justify-between">
-        <MdOutlineDarkMode  size={50} className="text-slate-100 hover:text-amber-500" />
+      <div className="p-3 m-3  max-w-4xl flex flex-row justify-between">
+      {munits
+      ?  <button
+      type="button"
+      onClick={toggleUnits}
+      className="mx-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-amber-500">°C</button>
+      :  <button
+      type="button"
+      onClick={toggleUnits}
+      className="mx-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-slate-100">°C</button>
+      }
+       
+       {munits
+      ?  <button
+      type="button"
+      onClick={toggleUnits}
+      className="mx-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-slate-100">°F</button>
+      :  <button
+      type="button"
+      onClick={toggleUnits}
+      className="mx-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-amber-500">°F</button>
+      }  
+             
+            
         <input
         value={location}
         onChange={e => setLocation(e.target.value)}
@@ -62,7 +97,7 @@ function Main() {
         <MdSearch
         onClick={searchLocation} 
         size={50} className="text-slate-100 hover:text-amber-500" />
-        <MdLocationOn size={50} className="text-slate-100 hover:text-amber-500" />
+        
       </div>
 
       {data.name !== undefined && 
@@ -75,8 +110,7 @@ function Main() {
                 {data.sys ?  data.sys.country :  null}
             </div>
           </div>
-          <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-slate-100">
-            <span className="text-amber-500">°C</span>  | °F </div>
+          
         </div><div className="p-3 m-3 max-w-4xl flex flex-col sm:flex-row justify-between">
             <div className="text-slate-100 font-semibold text-xl md:text-2xl lg:text-3xl xl:text-4xl">{dtConverterDay(data.dt)}</div>
             <div className="text-slate-100 font-semibold text-xl md:text-2xl lg:text-3xl xl:text-4xl">
@@ -98,7 +132,8 @@ function Main() {
                 <div className="flex flex-row my-3 justify-center">
                   <p className="mx-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-amber-500">
                     {data.main ? data.main.temp.toFixed() : null}</p>
-                  <p className="mx-2 text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100"> °C</p>
+                  <p className="mx-2 text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100">
+                    {munits ?  "°C" :  "°F" }</p>
                 </div>
               </div>
 
@@ -108,7 +143,8 @@ function Main() {
                 <div className="flex flex-row my-3 justify-center">
                   <p className="mx-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-amber-500">
                     {data.main ? data.main.feels_like.toFixed() : null} </p>
-                  <p className="mx-2 text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100"> °C</p>
+                  <p className="mx-2 text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100">
+                    {munits ?  "°C" :  "°F" }</p>
                 </div>
               </div>
 
@@ -118,7 +154,9 @@ function Main() {
                 <div className="flex flex-row my-3 justify-center">
                   <p className="mx-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-amber-500">
                     {data.main ? data.main.temp_max.toFixed() : null}</p>
-                  <p className="mx-2 text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100"> °C</p>
+                  <p className="mx-2 text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100">
+                  {munits ?  "°C" :  "°F" }
+                  </p>
                 </div>
               </div>
 
@@ -128,7 +166,9 @@ function Main() {
                 <div className="flex flex-row my-3 justify-center">
                   <p className="mx-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-amber-500">
                     {data.main ? data.main.temp_min.toFixed() : null} </p>
-                  <p className="mx-2 text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100"> °C</p>
+                  <p className="mx-2 text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100">
+                  {munits ?  "°C" :  "°F" }
+                  </p>
                 </div>
               </div>
 
@@ -199,7 +239,9 @@ function Main() {
                   <p className="mx-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-amber-500">
                     {data.wind ? data.wind.speed.toFixed() : null}
                   </p>
-                  <p className="mx-2 text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100"> m/s</p>
+                  <p className="mx-2 text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100">
+                  {munits ?  "m/s" :  "ml/hr" }
+                  </p>
                 </div>
               </div>
               <div className="flex flex-col border-2 rounded-2xl">
@@ -209,7 +251,9 @@ function Main() {
                   <p className="mx-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-amber-500">
                     {data.wind ? data.wind.gust.toFixed() : null}
                   </p>
-                  <p className="mx-2 text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100"> m/s</p>
+                  <p className="mx-2 text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100">
+                  {munits ?  "m/s" :  "ml/hr" }
+                  </p>
                 </div>
               </div>
             </div>
