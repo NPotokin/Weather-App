@@ -10,6 +10,7 @@ import {FiSunset, FiSunrise } from "react-icons/fi"
 
 
 
+
 /* Main will hold all the items */
 function Main() {
 
@@ -21,10 +22,9 @@ function Main() {
   
   
   function toggleUnits(){
+    urlM === "metric" ? setUrlM('imperial') : setUrlM("metric")
     setMunits(!munits);
-    urlM === "imperial" ? setUrlM('metric') : setUrlM("imperial")
     searchLocation();
-    
   } 
 
   
@@ -35,6 +35,7 @@ function Main() {
   const searchLocation = (event) => {
       axios.get(url).then((response) => {
       setData(response.data)
+      
 
     })}
 
@@ -42,20 +43,23 @@ function Main() {
     const a = new Date(timestamp * 1000);
     const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     const weekDays = ['Monday', "Tuesday", 'Wednesday', 'Thursday', 'Friday', 'Satursday', 'Sunday'];
-    const year = a.getFullYear();
-    const month = months[a.getMonth()];
-    const weekDay = weekDays[a.getDay()];
-    const date = a.getDate();
+    const year = a.getUTCFullYear();
+    const month = months[a.getUTCMonth()];
+    const weekDay = weekDays[a.getUTCDay()];
+    const date = a.getUTCDate();
     const day = `${weekDay}, ${month} ${date} ${year}`
     return day;
   }
 
-  function dtConverterTime(timestamp) {
-    const b = new Date(timestamp * 1000);
-    const hour = b.getHours();
-    let min = b.getMinutes() < 10 ? "0"+ b.getMinutes() : b.getMinutes();
+  function dtConverterTime(timestamp, offset) {
+    const b = new Date(timestamp * 1000 + offset * 1000);
+    
+    const hour = b.getUTCHours();
+    let min = b.getUTCMinutes() < 10 ? "0"+ b.getUTCMinutes() : b.getUTCMinutes();
     const time = `${hour} : ${min} `
+    console.log(time)
     return time;
+
   }
 
   
@@ -114,7 +118,7 @@ function Main() {
         </div><div className="p-3 m-3 max-w-4xl flex flex-col sm:flex-row justify-between">
             <div className="text-slate-100 font-semibold text-xl md:text-2xl lg:text-3xl xl:text-4xl">{dtConverterDay(data.dt)}</div>
             <div className="text-slate-100 font-semibold text-xl md:text-2xl lg:text-3xl xl:text-4xl">
-              <span className="text-amber-500">Local time:</span> {dtConverterTime(data.dt)}</div>
+              <span className="text-amber-500">Local time:</span> {dtConverterTime(data.dt, data.timezone)}</div>
           </div>
           <div className="px-3 mx-3">
           <div className="text-slate-100 font-semibold text-xl md:text-2xl lg:text-3xl xl:text-4xl">
@@ -177,7 +181,7 @@ function Main() {
                 <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100 mx-auto">Sunrise</p>
                 <div className="flex flex-row my-3 justify-center">
                   <p className="mx-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-amber-500">
-                    {data.sys ? dtConverterTime(data.sys.sunrise)  : null} </p>
+                    {data.sys ? dtConverterTime(data.sys.sunrise, data.timezone)  : null} </p>
                 </div>
               </div>
 
@@ -186,7 +190,7 @@ function Main() {
                 <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100 mx-auto">Sunset</p>
                 <div className="flex flex-row my-3 justify-center">
                   <p className="mx-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-amber-500">
-                  {data.sys ? dtConverterTime(data.sys.sunset)  : null}
+                  {data.sys ? dtConverterTime(data.sys.sunset, data.timezone)  : null}
                   </p>
                 </div>
               </div>
@@ -249,7 +253,7 @@ function Main() {
                 <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100 mx-auto">Gusts</p>
                 <div className="flex flex-row my-3 justify-center">
                   <p className="mx-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-amber-500">
-                    {data.wind ? data.wind.gust.toFixed() : null}
+                    {data.wind ? data.wind.gust : null}
                   </p>
                   <p className="mx-2 text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100">
                   {munits ?  "m/s" :  "ml/hr" }
