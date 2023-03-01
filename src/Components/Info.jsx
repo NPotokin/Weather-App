@@ -37,7 +37,6 @@ function Info() {
 
   function dtConverterTime(timestamp, offset) {
     const b = new Date(timestamp * 1000 + offset * 1000);
-    
     const hour = b.getUTCHours();
     let min = b.getUTCMinutes() < 10 ? "0"+ b.getUTCMinutes() : b.getUTCMinutes();
     const time = `${hour} : ${min} `
