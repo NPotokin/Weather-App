@@ -1,25 +1,32 @@
 import React from "react"
-import { useState } from "react";
 import axios from "axios"
 import { MdSearch} from "react-icons/md"
+import useStore from "./Store";
 
 function Info() {
       
-  const [data, setData] = useState({});
-  const [location, setLocation] = useState('')
-  const [munits, setMunits] = useState(false)
-  const [urlM, setUrlM] = useState('metric')
-  
-  function toggleUnits(){
-    urlM === "metric" ? setUrlM('imperial') : setUrlM("metric")
-    setMunits(!munits);
-    searchLocation();
-  } 
+  const [data, setData] = useStore(
+    (state) => [state.data, state.setData]
+  );
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=${urlM}`
+  const [location, setLocation] = useStore(
+    (state) => [state.location, state.setLocation]
+  )
+
+  const unitsC = useStore(
+    (state) => state.unitsC
+  )
+  
+ const toggleUnits = useStore(
+  (state) => state.toggleUnits)
+
+
+
+  const urlC = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=metric`
+  const urlF = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=imperial`
 
   const searchLocation = (event) => {
-      axios.get(url).then((response) => {
+      axios.get(unitsC ? urlC : urlF).then((response) => {
       setData(response.data)
     })}
 
@@ -48,7 +55,7 @@ function Info() {
     <div>
     <div>
       <div className="p-3 m-3  max-w-4xl flex flex-row justify-between">
-      {munits
+      {unitsC
       ?  <button
       type="button"
       onClick={toggleUnits}
@@ -59,7 +66,7 @@ function Info() {
       className="mx-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-slate-100">°C</button>
       }
        
-       {munits
+       {unitsC
       ?  <button
       type="button"
       onClick={toggleUnits}

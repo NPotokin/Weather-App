@@ -5,6 +5,8 @@ import MainData from "./MainData"
 import AdvancedData from "./AdvancedData"
 
 
+
+
 function NavBar() {
   return (
     <div className="container p-3 m-3 flex flex-col mx-auto">
