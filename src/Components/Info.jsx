@@ -20,14 +20,16 @@ function Info() {
   const toggleUnits = useStore(
   (state) => state.toggleUnits)
 
-  const [ urlC, urlF] = useStore (
-    (state) => [ state.urlC, state.urlF]
-  )
-
   const searchLocation = (event) => {
     axios.get(unitsC ? urlC : urlF).then((response) => {
     setData(response.data)
   })}
+ 
+
+
+const urlC = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=metric`
+const urlF = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=imperial`
+
 
   function dtConverterDay(timestamp) {
     const a = new Date(timestamp * 1000);
