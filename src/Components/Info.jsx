@@ -17,18 +17,17 @@ function Info() {
     (state) => state.unitsC
   )
   
- const toggleUnits = useStore(
+  const toggleUnits = useStore(
   (state) => state.toggleUnits)
 
-
-
-  const urlC = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=metric`
-  const urlF = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=imperial`
+  const [ urlC, urlF] = useStore (
+    (state) => [ state.urlC, state.urlF]
+  )
 
   const searchLocation = (event) => {
-      axios.get(unitsC ? urlC : urlF).then((response) => {
-      setData(response.data)
-    })}
+    axios.get(unitsC ? urlC : urlF).then((response) => {
+    setData(response.data)
+  })}
 
   function dtConverterDay(timestamp) {
     const a = new Date(timestamp * 1000);
@@ -55,6 +54,7 @@ function Info() {
     <div>
     <div>
       <div className="p-3 m-3  max-w-4xl flex flex-row justify-between">
+
       {unitsC
       ?  <button
       type="button"
@@ -65,8 +65,17 @@ function Info() {
       onClick={toggleUnits}
       className="mx-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-slate-100">°C</button>
       }
-       
-       {unitsC
+      <MdSearch
+        onClick={searchLocation} 
+        size={50} className="text-slate-100 hover:text-amber-500" />
+
+        <input
+        value={location}
+        onChange={e => setLocation(e.target.value)}
+        type="text"
+        className="bg-gradient-to-r
+        from-purple-600 to-fuchsia-600 w-full mx-6 rounded-xl text-xl text-slate-100 pl-6 focus:outline-none" ></input>
+        {unitsC
       ?  <button
       type="button"
       onClick={toggleUnits}
@@ -76,14 +85,6 @@ function Info() {
       onClick={toggleUnits}
       className="mx-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-amber-500">°F</button>
       }  
-             
-            
-        <input
-        value={location}
-        onChange={e => setLocation(e.target.value)}
-        type="text"
-        className="bg-gradient-to-r
-        from-purple-600 to-fuchsia-600 w-full mx-6 rounded-xl text-xl text-slate-100 pl-6 focus:outline-none" ></input>
         <MdSearch
         onClick={searchLocation} 
         size={50} className="text-slate-100 hover:text-amber-500" />
