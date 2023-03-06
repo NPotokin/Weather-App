@@ -2,7 +2,8 @@ import React from "react"
 import useStore from "./Store";
 import {TiWeatherPartlySunny, TiWeatherSunny } from "react-icons/ti"
 import { FaTemperatureHigh, FaTemperatureLow} from "react-icons/fa"
-import { Link } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
+import MainTempForecast from "./MainTempForecast";
 
 
 
@@ -22,7 +23,7 @@ function MainData() {
         <div className="p-2 m-2 grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto justify-around">
 
           <div className="flex flex-col border-2 rounded-2xl">
-            <Link to = "./MainTempForecast.jsx">
+            <Link to = "/MainData/MainTempForecast">
             <TiWeatherPartlySunny size={75} className="text-amber-500 mx-auto mt-3" />
             </Link>
             <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100 mx-auto">Temp.</p>
@@ -73,10 +74,19 @@ function MainData() {
             </div>
           </div>
 
-
-
         </div>
+
+        <Routes>
+              <Route path="/MainTempForecast" element={ <MainTempForecast /> } /> 
+
+        </Routes>
+
       </div>
+
+
+
+   
+
     </>
   
   );

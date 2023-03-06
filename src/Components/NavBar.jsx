@@ -34,7 +34,7 @@ function NavBar() {
       </nav>
       
       <Routes>
-        <Route path="/MainData" element={<MainData />} />
+        <Route path="/MainData/*" element={<MainData />} />
         <Route path="/AboutData" element={<AboutData />} />
         <Route path="/AdvancedData" element={<AdvancedData />} />
       </Routes>

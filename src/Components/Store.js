@@ -7,7 +7,10 @@ const useStore = create( (set) => ({
     
 data: {},
 setData: (data) => set({ data: data }),
-
+    
+dataForecast: {},
+setDataForecast: (dataForecast) => set({ dataForecast: dataForecast }),
+    
 location: '',
 setLocation: (location) => set({location: location}),
 
