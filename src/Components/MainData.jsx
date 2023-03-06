@@ -3,7 +3,7 @@ import useStore from "./Store";
 import {TiWeatherPartlySunny, TiWeatherSunny } from "react-icons/ti"
 import { FaTemperatureHigh, FaTemperatureLow} from "react-icons/fa"
 import { Link, Routes, Route } from "react-router-dom";
-import MainTempForecast from "./MainTempForecast";
+import MainTempForecast from "./MainTempForecastGraph";
 
 
 
