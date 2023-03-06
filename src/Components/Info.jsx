@@ -2,6 +2,7 @@ import React from "react"
 import axios from "axios"
 import { MdSearch} from "react-icons/md"
 import useStore from "./Store";
+import { useEffect } from "react";
 
 function Info() {
       
@@ -20,6 +21,7 @@ function Info() {
   const toggleUnits = useStore(
   (state) => state.toggleUnits)
 
+  
   const searchLocation = (event) => {
     axios.get(unitsC ? urlC : urlF).then((response) => {
     setData(response.data)
