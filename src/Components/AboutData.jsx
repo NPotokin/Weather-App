@@ -2,6 +2,10 @@ import React from "react"
 import useStore from "./Store";
 import {FiSunset, FiSunrise } from "react-icons/fi"
 import { WiBarometer, WiHumidity } from "react-icons/wi"
+import { Link, Routes, Route } from "react-router-dom";
+import AboutPressureForecast from "./AboutPressureForecast";
+import AboutHumidityForecast from "./AboutHumidityForecast";
+
 
 function AboutData() {
 
@@ -46,7 +50,9 @@ function AboutData() {
         </div>
 
         <div className="flex flex-col border-2 rounded-2xl">
-          <WiBarometer size={75} className="text-amber-500 mx-auto mt-3" />
+          <Link to="/AboutData/AboutPressureForecast">
+          <WiBarometer size={75} className="animate-pulse text-amber-500 mx-auto mt-3" />
+          </Link>
           <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100 mx-auto">Pressure</p>
           <div className="flex flex-row my-3 justify-center">
             <p className="mx-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-amber-500">
@@ -57,7 +63,10 @@ function AboutData() {
         </div>
 
         <div className="flex flex-col border-2 rounded-2xl">
-          <WiHumidity size={75} className="text-amber-500 mx-auto mt-3" />
+        <Link to="/AboutData/AboutHumidityForecast">
+        <WiHumidity size={75} className="animate-pulse text-amber-500 mx-auto mt-3" />
+          </Link>
+          
           <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100 mx-auto">Humidity</p>
           <div className="flex flex-row my-3 justify-center">
             <p className="mx-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-amber-500">
@@ -71,6 +80,13 @@ function AboutData() {
 
         </div>
       </div>
+
+      <Routes>
+              <Route path="/AboutPressureForecast" element={ <AboutPressureForecast /> } /> 
+              <Route path="/AboutHumidityForecast" element={ <AboutHumidityForecast /> } /> 
+              
+
+      </Routes>
     </>
   );
 }

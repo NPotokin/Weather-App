@@ -5,8 +5,8 @@ import useStore from './Store';
 import { AreaChart, Area, Label, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 
-const MainTempForecastGraph = () => {
-  const [dataTemp, setDataTemp] = useState([]);
+const AboutPressureForecastGraph = () => {
+  const [dataPressure, setDataPressure] = useState([]);
   const [dataTime, setDataTime] = useState([]);
   const [graphData, setGraphData] = useState([]);
 
@@ -24,12 +24,12 @@ const MainTempForecastGraph = () => {
   const searchForecast = (event) => {
     axios.get(unitsC ? urlCForecast : urlFForecast).then((response) => {
       setDataForecast(response.data.list);
-      const dataTemp = response.data.list.map((item) => item.main.temp);
+      const dataPressure = response.data.list.map((item) => item.main.pressure);
       const dataTime = response.data.list.map((item) => item.dt_txt);
       const graphData = dataTime.map((item, index) => {
-        return { time: item, value: dataTemp[index] };
+        return { time: item, value: dataPressure[index] };
       });
-      setDataTemp(dataTemp);
+      setDataPressure(dataPressure);
       setDataTime(dataTime);
       setGraphData(graphData);
     });
@@ -45,7 +45,7 @@ const MainTempForecastGraph = () => {
   return (
     <div className='m-1 p-1 mx-auto'>
         <div className="container flex justify-center mx-auto mb-5 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-slate-100">
-              Temperature forecast for 5 days
+              Pressure forecast for 5 days
         </div>
 
         {graphData.length > 0 ? (
@@ -67,4 +67,4 @@ const MainTempForecastGraph = () => {
   );
 };
 
-export default MainTempForecastGraph;
+export default AboutPressureForecastGraph;
