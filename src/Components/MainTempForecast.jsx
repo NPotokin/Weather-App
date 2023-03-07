@@ -4,7 +4,7 @@ import MainTempForecastGraph from './MainTempForecastGraph'
 function MainTempForecast() {
 
     return (
-    <div>
+    <div className="p-1 m-1 mx-auto">
       <MainTempForecastGraph />
 
     </div>
