@@ -26,7 +26,14 @@ function Info() {
     axios.get(unitsC ? urlC : urlF).then((response) => {
     setData(response.data)
   })}
+
+  const handleButtonClick = () => {
+    toggleUnits();
+    searchLocation();
+  }
  
+  
+  
 
 
 const urlC = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=metric`
@@ -59,19 +66,18 @@ const urlF = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appi
     <div>
       <div className="p-3 m-3  max-w-4xl flex flex-row justify-between">
 
-      {unitsC
-      ?  <button
+      <button
       type="button"
-      onClick={toggleUnits}
-      className="mx-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-amber-500">°C</button>
-      :  <button
+      onClick={handleButtonClick}
+      className={`mx-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold
+      ${unitsC ? 'text-amber-500 scale-125' : 'text-slate-100'}`}>°C</button>
+      
+      <button
       type="button"
-      onClick={toggleUnits}
-      className="mx-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-slate-100">°C</button>
-      }
-      <MdSearch
-        onClick={searchLocation} 
-        size={50} className="text-slate-100 hover:text-amber-500" />
+      onClick={handleButtonClick}
+      className={`mx-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold
+      ${unitsC ? 'text-slate-100' : 'text-amber-500 scale-125'}`}>°F</button>
+      
 
         <input
         value={location}
@@ -79,19 +85,10 @@ const urlF = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appi
         type="text"
         className="bg-gradient-to-r
         from-purple-600 to-fuchsia-600 w-full mx-6 rounded-xl text-xl text-slate-100 pl-6 focus:outline-none" ></input>
-        {unitsC
-      ?  <button
-      type="button"
-      onClick={toggleUnits}
-      className="mx-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-slate-100">°F</button>
-      :  <button
-      type="button"
-      onClick={toggleUnits}
-      className="mx-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-amber-500">°F</button>
-      }  
+        
         <MdSearch
         onClick={searchLocation} 
-        size={50} className="text-slate-100 hover:text-amber-500" />
+        size={50} className="text-slate-100 hover:text-amber-500 hover:scale-125" />
         
       </div>
       </div>
@@ -111,6 +108,8 @@ const urlF = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appi
                 {data.sys ?  data.sys.country :  null}
               </div>
             </div>
+
+            <div ar > </div>
 
               
             <div className="flex flex-col">

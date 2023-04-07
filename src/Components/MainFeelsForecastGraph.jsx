@@ -44,7 +44,8 @@ const MainFeelsForecastGraph = () => {
 
   return (
     <div className='m-1 p-1 mx-auto'>
-        <div className="container flex justify-center mx-auto mb-5 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-slate-100">
+        <div className="container flex justify-center mx-auto mb-5
+         text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-slate-100">
               Feels Like forecast for 5 days
         </div>
 
