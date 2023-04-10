@@ -2,6 +2,7 @@ import React from "react"
 import useStore from "./Store";
 import {TiWeatherPartlySunny, TiWeatherSunny } from "react-icons/ti"
 import { FaTemperatureHigh, FaTemperatureLow} from "react-icons/fa"
+import {TbArrowBigRightLines} from 'react-icons/tb'
 import { Link, Routes, Route } from "react-router-dom";
 import MainTempForecast from "./MainTempForecastGraph";
 import MainFeelsForecast from "./MainFeelsForecastGraph";
@@ -26,9 +27,12 @@ function MainData() {
         <div className="p-2 m-2 grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto justify-around">
 
           <div className="flex flex-col border-2 rounded-2xl">
+            <div className="relative">
             <Link to = "/MainData/MainTempForecast">
-            <TiWeatherPartlySunny size={75} className="animate-pulse  text-amber-500 mx-auto mt-3" />
+            <TbArrowBigRightLines size={50} className="absolute top-1 right-1 text-amber-500 hover:scale-125 " />
             </Link>
+            </div>
+            <TiWeatherPartlySunny size={75} className="  text-amber-500 mx-auto mt-3" />
             <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100 mx-auto">Temp.</p>
             <div className="flex flex-row my-3 justify-center">
               <p className="mx-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-amber-500">
@@ -41,10 +45,13 @@ function MainData() {
            </div>
 
            <div className="flex flex-col border-2 rounded-2xl">
+           <div className="relative">
            <Link to = "/MainData/MainFeelsForecast">
-           <TiWeatherSunny size={75} className="animate-pulse text-amber-500 mx-auto mt-3" />
+           <TbArrowBigRightLines size={50} className="absolute top-1 right-1 text-amber-500 hover:scale-125 " />
             </Link>
+           </div>
 
+            <TiWeatherSunny size={75} className=" text-amber-500 mx-auto mt-3" />
             <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100 mx-auto">Feels</p>
             <div className="flex flex-row my-3 justify-center">
               <p className="mx-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-amber-500">
@@ -57,10 +64,14 @@ function MainData() {
            </div> 
 
            <div className="flex flex-col border-2 rounded-2xl">
-           <Link to = "/MainData/MainHighForecast">
-           <FaTemperatureHigh size={75} className="animate-pulse text-amber-500 mx-auto mt-3" />
-          </Link>
+           <div className="relative">
 
+           <Link to = "/MainData/MainHighForecast">
+           <TbArrowBigRightLines size={50} className="absolute top-1 right-1 text-amber-500 hover:scale-125 " />
+          </Link>
+           </div>
+
+           <FaTemperatureHigh size={75} className=" text-amber-500 mx-auto mt-3" />
             <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100 mx-auto">High</p>
             <div className="flex flex-row my-3 justify-center">
               <p className="mx-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-amber-500">
@@ -72,9 +83,12 @@ function MainData() {
           </div>
 
           <div className="flex flex-col border-2 rounded-2xl">
+          <div className="relative">
           <Link to = "/MainData/MainLowForecast">
-          <FaTemperatureLow size={75} className="animate-pulse text-amber-500 mx-auto mt-3" />
+           <TbArrowBigRightLines size={50} className="absolute top-1 right-1 text-amber-500 hover:scale-125 " />
           </Link>
+          </div>
+          <FaTemperatureLow size={75} className=" text-amber-500 mx-auto mt-3" />
             <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-100 mx-auto">Low</p>
             <div className="flex flex-row my-3 justify-center">
               <p className="mx-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-amber-500">

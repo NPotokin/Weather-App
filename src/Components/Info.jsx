@@ -27,17 +27,18 @@ function Info() {
     setData(response.data)
   })}
 
+  const searchToggleLocation = (event) => {
+    axios.get(unitsC ? urlF : urlC).then((response) => {
+    setData(response.data)
+  })}
+
   const handleButtonClick = () => {
     toggleUnits();
-    searchLocation();
+    searchToggleLocation();
   }
- 
-  
-  
 
-
-const urlC = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=metric`
-const urlF = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=imperial`
+  const urlC = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=metric`
+  const urlF = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=imperial`
 
 
   function dtConverterDay(timestamp) {
@@ -109,7 +110,7 @@ const urlF = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appi
               </div>
             </div>
 
-            <div ar > </div>
+            
 
               
             <div className="flex flex-col">
