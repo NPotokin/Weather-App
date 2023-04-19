@@ -28,7 +28,7 @@ function MainData() {
 
           <div className="flex flex-col border-2 rounded-2xl">
             <div className="relative">
-            <Link to = "/MainData/MainTempForecast">
+            <Link to = "/MainData/MainTempForecast" aria-label="Go to Temperature forecast">
             <TbArrowBigRightLines size={50} className="absolute top-1 right-1 text-amber-500 hover:scale-125 " />
             </Link>
             </div>
@@ -46,7 +46,7 @@ function MainData() {
 
            <div className="flex flex-col border-2 rounded-2xl">
            <div className="relative">
-           <Link to = "/MainData/MainFeelsForecast">
+           <Link to = "/MainData/MainFeelsForecast" aria-label="Go to feels like forecast">
            <TbArrowBigRightLines size={50} className="absolute top-1 right-1 text-amber-500 hover:scale-125 " />
             </Link>
            </div>
@@ -66,7 +66,7 @@ function MainData() {
            <div className="flex flex-col border-2 rounded-2xl">
            <div className="relative">
 
-           <Link to = "/MainData/MainHighForecast">
+           <Link to = "/MainData/MainHighForecast" aria-label="Go to high temperatures forecast">
            <TbArrowBigRightLines size={50} className="absolute top-1 right-1 text-amber-500 hover:scale-125 " />
           </Link>
            </div>
@@ -84,7 +84,7 @@ function MainData() {
 
           <div className="flex flex-col border-2 rounded-2xl">
           <div className="relative">
-          <Link to = "/MainData/MainLowForecast">
+          <Link to = "/MainData/MainLowForecast" aria-label="Go to low temperatures forecast">
            <TbArrowBigRightLines size={50} className="absolute top-1 right-1 text-amber-500 hover:scale-125 " />
           </Link>
           </div>

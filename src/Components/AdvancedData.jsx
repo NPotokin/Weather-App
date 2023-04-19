@@ -27,7 +27,7 @@ function AdvancedData() {
 
         <div className="flex flex-col border-2 rounded-2xl">
         <div className="relative">
-          <Link to='/AdvancedData/AdvancedVisibilityForecast'>
+          <Link to='/AdvancedData/AdvancedVisibilityForecast' aria-label="Go to visibility forecast">
           <TbArrowBigRightLines size={50} className="absolute top-1 right-1 text-amber-500 hover:scale-125 " />
           </Link>
         </div>
@@ -44,7 +44,7 @@ function AdvancedData() {
 
         <div className="flex flex-col border-2 rounded-2xl">
         <div className="relative">
-          <Link to='/AdvancedData/AdvancedCloudsForecast'>
+          <Link to='/AdvancedData/AdvancedCloudsForecast' aria-label="Go to clouds forecast">
           <TbArrowBigRightLines size={50} className="absolute top-1 right-1 text-amber-500 hover:scale-125 " />
           </Link>
         </div>
@@ -61,7 +61,7 @@ function AdvancedData() {
 
         <div className="flex flex-col border-2 rounded-2xl">
         <div className="relative">
-          <Link to='/AdvancedData/AdvancedWindForecast'>
+          <Link to='/AdvancedData/AdvancedWindForecast' aria-label="Go to wind forecast">
           <TbArrowBigRightLines size={50} className="absolute top-1 right-1 text-amber-500 hover:scale-125 " />
           </Link>
         </div>
@@ -79,7 +79,7 @@ function AdvancedData() {
 
         <div className="flex flex-col border-2 rounded-2xl">
        <div className="relative">
-         <Link to='/AdvancedData/AdvancedGustsForecast'>
+         <Link to='/AdvancedData/AdvancedGustsForecast' aria-label="Go to wind gusts forecast">
          <TbArrowBigRightLines size={50} className="absolute top-1 right-1 text-amber-500 hover:scale-125 " />
          </Link>
        </div>

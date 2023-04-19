@@ -51,7 +51,7 @@ function AboutData() {
 
         <div className="flex flex-col border-2 rounded-2xl">
           <div className="relative">
-            <Link to="/AboutData/AboutPressureForecast">
+            <Link to="/AboutData/AboutPressureForecast" aria-label="Go to pressure forecast">
             <TbArrowBigRightLines size={50} className="absolute top-1 right-1 text-amber-500 hover:scale-125 " />
             </Link>
           </div>
@@ -69,7 +69,7 @@ function AboutData() {
         <div className="flex flex-col border-2 rounded-2xl">
         <div className="relative">
 
-        <Link to="/AboutData/AboutHumidityForecast">
+        <Link to="/AboutData/AboutHumidityForecast" aria-label="Go to humidity forecast">
         <TbArrowBigRightLines size={50} className="absolute top-1 right-1 text-amber-500 hover:scale-125 " />
           </Link>
         </div>

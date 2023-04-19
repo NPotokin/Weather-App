@@ -22,13 +22,16 @@ function NavBar() {
 
     <div className="container p-3 m-3 flex flex-col mx-auto">
       <nav className="w-full flex flex-row mx-auto">
-        <Link to="/MainData" className="border-2 border-slate-100 hover:border-amber-500  p-3 m-1
+        <Link to="/MainData" aria-label="Go to main data"
+        className="border-2 border-slate-100 hover:border-amber-500  p-3 m-1
         text-center text-slate-100 hover:text-amber-500 font-semibold text-lg md:text-1xl
          lg:text-2xl xl:text-3xl pt-8  rounded-xl h-24 w-1/3">Main</Link>
-        <Link to="/AboutData" className="border-2 border-slate-100 hover:border-amber-500  p-3 m-1
+        <Link to="/AboutData" aria-label="Go to about data"
+        className="border-2 border-slate-100 hover:border-amber-500  p-3 m-1
         text-center text-slate-100 hover:text-amber-500 font-semibold text-lg md:text-1xl
          lg:text-2xl xl:text-3xl pt-8  rounded-xl h-24 w-1/3">About</Link>
-        <Link to="/AdvancedData" className="border-2 border-slate-100 hover:border-amber-500  p-3 m-1
+        <Link to="/AdvancedData" aria-label="Go to advanced data"
+        className="border-2 border-slate-100 hover:border-amber-500  p-3 m-1
         text-center text-slate-100 hover:text-amber-500 font-semibold text-lg md:text-1xl
          lg:text-2xl xl:text-3xl pt-8  rounded-xl h-24 w-1/3">Advanced</Link>
       </nav>

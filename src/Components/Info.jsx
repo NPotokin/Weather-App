@@ -69,12 +69,14 @@ function Info() {
 
       <button
       type="button"
+      aria-label="Unit toggle, metric"
       onClick={handleButtonClick}
       className={`mx-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold
       ${unitsC ? 'text-amber-500 scale-125' : 'text-slate-100'}`}>°C</button>
       
       <button
       type="button"
+      aria-label="Unit toggle, imperial"
       onClick={handleButtonClick}
       className={`mx-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold
       ${unitsC ? 'text-slate-100' : 'text-amber-500 scale-125'}`}>°F</button>
@@ -84,10 +86,13 @@ function Info() {
         value={location}
         onChange={e => setLocation(e.target.value)}
         type="text"
+        aria-label="search"
         className="bg-gradient-to-r
         from-purple-600 to-fuchsia-600 w-full mx-6 rounded-xl text-xl text-slate-100 pl-6 focus:outline-none" ></input>
         
         <MdSearch
+        type="button"
+        aria-label="search"
         onClick={searchLocation} 
         size={50} className="text-slate-100 hover:text-amber-500 hover:scale-125" />
         
