@@ -37,14 +37,15 @@ const AdvancedGustsForecastGraph = () => {
 
   useEffect(() => {
     searchForecast();
-  }, []);
+  }, [unitsC]);
 
   const urlCForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=metric`;
   const urlFForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=imperial`;
 
   return (
     <div className='m-1 p-1 mx-auto'>
-        <div className="container flex justify-center mx-auto mb-5 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-slate-100">
+        <div className="container flex justify-center mx-auto mb-5 
+        text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-slate-100">
               Gusts forecast for 5 days
         </div>
 

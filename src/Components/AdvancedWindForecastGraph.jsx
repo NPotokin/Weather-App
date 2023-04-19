@@ -37,7 +37,7 @@ const AdvancedWindForecastGraph = () => {
 
   useEffect(() => {
     searchForecast();
-  }, []);
+  }, [unitsC]);
 
   const urlCForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=metric`;
   const urlFForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=7661508e301be410c0c9f630604f8b6a&units=imperial`;
