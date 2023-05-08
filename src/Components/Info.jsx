@@ -1,6 +1,6 @@
-import React from "react"
-import axios from "axios"
-import { MdSearch} from "react-icons/md"
+import React from "react";
+import axios from "axios";
+import { MdSearch} from "react-icons/md";
 import useStore from "./Store";
 import { useEffect } from "react";
 
